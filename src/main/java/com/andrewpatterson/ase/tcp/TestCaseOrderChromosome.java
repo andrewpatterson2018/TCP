@@ -3,6 +3,7 @@ package com.andrewpatterson.ase.tcp;
 import org.apache.commons.math3.genetics.AbstractListChromosome;
 import org.apache.commons.math3.genetics.InvalidRepresentationException;
 
+import java.util.Arrays;
 import java.util.List;
 
 /*Chromosome implementation to represent an ordering of test cases*/
@@ -65,5 +66,20 @@ public class TestCaseOrderChromosome extends AbstractListChromosome<TestCase>{
             tests.append(" ").append(test.getTestID());
         }
         return tests.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        TestCaseOrderChromosome testCaseOrderChromosome = (TestCaseOrderChromosome) o;
+
+        for(int i=0;i<getRepresentation().size(); i++){
+            if(!testCaseOrderChromosome.representation().get(i).equals((TestCase)getRepresentation().get(i)))
+                return false;
+        }
+
+        return true;
     }
 }

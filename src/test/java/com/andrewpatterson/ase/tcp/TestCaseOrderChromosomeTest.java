@@ -32,4 +32,23 @@ public class TestCaseOrderChromosomeTest {
         Assert.assertEquals(0.4375, testCaseOrderChromosome.fitness(), 0.001);
     }
 
+    @org.junit.Test
+    public void equals() throws Exception {
+
+        //1. create some TestCases
+        ArrayList<TestCase> testcases = new ArrayList<TestCase>();
+
+        testcases.add(new TestCase("A",new int[]{0,0,0,0,0,0,0,0}));
+        testcases.add(new TestCase("B",new int[]{1,1,0,0,0,0,0,0}));
+        testcases.add(new TestCase("C",new int[]{1,1,1,0,0,0,0,0}));
+        testcases.add(new TestCase("D",new int[]{0,1,1,0,0,0,0,0}));
+        //now create a chromosome
+        TestCaseOrderChromosome testCaseOrderChromosome1 = new TestCaseOrderChromosome(testcases);
+
+        //now create another one of the same
+        Assert.assertTrue("Chromosomes are the same and equal", testCaseOrderChromosome1.equals(new TestCaseOrderChromosome(testcases)));
+
+        //test chromosome order A–B–C–D–E–F–G–H–I–J
+
+    }
 }
