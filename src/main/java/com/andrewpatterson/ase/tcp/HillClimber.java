@@ -11,7 +11,7 @@ import org.junit.Test;
 import java.io.IOException;
 import java.util.*;
 
-/*type randomly evolves Test case permutations*/
+/*Hillclimber takes a random initial permutation then finds all neighbours and iterates until it is no longer changed.*/
 public class HillClimber implements Runnable {
     private static RandomDataGenerator rdg = new RandomDataGenerator(GeneticAlgorithm.getRandomGenerator());
 
@@ -29,23 +29,28 @@ public class HillClimber implements Runnable {
 
         //now evaluate all the neighbours
         TestCaseOrderChromosome current = testCaseOrderChromosome;
+        System.out.println(current.toString());
+        int iterations = 0;
         while(true){
             List<TestCaseOrderChromosome> neighbours = new ArrayList<TestCaseOrderChromosome>(getNeighbours(testCaseOrderChromosome));
 
             boolean hasChanged = false;
             //now select the fittest individual to continue
             for(TestCaseOrderChromosome tc: neighbours){
+                System.out.println(tc+"\t"+tc.fitness() + "\t" + current.fitness());
                 if (tc.fitness() > current.fitness()) {
                     current = tc;
                     hasChanged = true;
                 }
             }
-            if(hasChanged == true){ //if the current chromosome didnt change then we have found optimum
+            if(!hasChanged){ //if the current chromosome didnt change then we have found optimum
                 break;
             }
+            System.out.println(current.toString());
+            iterations++;
         }
 
-
+        System.out.println(iterations);
         System.out.println(current.toString());
 
 
@@ -79,10 +84,10 @@ public class HillClimber implements Runnable {
 
             //create a new chromosome with the current test case at that position
             List<TestCase> rep = new ArrayList<TestCase>(testCaseOrderChromosome.representation());
-            rep.add(elementPosition, testCase);
+            rep.set(elementPosition, testCase);
             TestCaseOrderChromosome next = new TestCaseOrderChromosome(rep);
 
-            if(testCaseOrderChromosome.fitness() > next.fitness()){
+            if(next.fitness() > current.fitness()){
                 current = next;
             }
         }
