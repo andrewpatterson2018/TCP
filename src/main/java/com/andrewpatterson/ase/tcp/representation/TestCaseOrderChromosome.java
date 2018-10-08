@@ -1,9 +1,8 @@
-package com.andrewpatterson.ase.tcp;
+package com.andrewpatterson.ase.tcp.representation;
 
 import org.apache.commons.math3.genetics.AbstractListChromosome;
 import org.apache.commons.math3.genetics.InvalidRepresentationException;
 
-import java.util.Arrays;
 import java.util.List;
 
 /*Chromosome implementation to represent an ordering of test cases*/
@@ -42,22 +41,32 @@ public class TestCaseOrderChromosome extends AbstractListChromosome<TestCase>{
     public double fitness() {
         //get the faultmatrix from one of the test cases
         int faultDimensions = getRepresentation().get(0).getFaultsMatrix().length;
-
-        double faultPositionSum = 0;
+        float faultPositionSum = 0;
 
         for(int i=0; i<faultDimensions; i++){
-            for(int j=0; j<getLength(); j++){
-                if(getRepresentation().get(j).hasDetectedFault(i)){
-                    faultPositionSum += j+1;
-                    break;
-                }
-            }
+            faultPositionSum = faultPositionSum+doThis(i, getLength());
         }
 
 
-        return  1- (faultPositionSum / (getLength()*faultDimensions))+ 1.0/(getLength()*2);
+        if(faultPositionSum == 0){
+            return 0;
+        }
+        float x = (faultPositionSum / (getLength()*faultDimensions));
+        float y = 1.0F/(getLength()*2);
+        float xy = x+y;
+        return 1-x+y;
     }
+    private float doThis(int i, int length){
+        int faultPositionSum = 0;
+        for(int j=0; j<getLength(); j++){
+            if(getRepresentation().get(j).hasDetectedFault(i)){
+                faultPositionSum += j+1;
 
+                break;
+            }
+        }
+        return faultPositionSum;
+    }
     @Override
     public String toString() {
         StringBuilder tests= new StringBuilder();

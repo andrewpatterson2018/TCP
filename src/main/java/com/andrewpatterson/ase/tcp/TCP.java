@@ -1,8 +1,9 @@
 package com.andrewpatterson.ase.tcp;
 
+import com.andrewpatterson.ase.tcp.representation.TestCase;
+import com.andrewpatterson.ase.tcp.representation.TestCaseOrderChromosome;
 import org.apache.commons.math3.genetics.*;
 import org.apache.commons.math3.random.RandomDataGenerator;
-import org.junit.Test;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -24,7 +25,9 @@ public class TCP {
             for(Object o: permutation){
                 rep.add((TestCase) o);
             }
-            population.addChromosome(new TestCaseOrderChromosome(rep));
+            TestCaseOrderChromosome testCaseOrderChromosome = new TestCaseOrderChromosome(rep);
+            System.out.println(testCaseOrderChromosome +"\t"+testCaseOrderChromosome.fitness());
+            population.addChromosome(testCaseOrderChromosome);
 
         }
 
@@ -44,8 +47,9 @@ public class TCP {
 
         Population initial = getInitialPopulation(100, 5);
 
+        System.out.println("Population size: "+initial.getPopulationSize());
         // stopping condition
-        StoppingCondition stopCond = new FixedGenerationCount(10000);
+        StoppingCondition stopCond = new FixedGenerationCount(10);
 
         // run the algorithm
         Population finalPopulation = ga.evolve(initial, stopCond);
@@ -54,5 +58,6 @@ public class TCP {
         Chromosome bestFinal = finalPopulation.getFittestChromosome();
 
         System.out.println(bestFinal +" APFD: "+bestFinal.getFitness());
+        System.out.println(bestFinal.toString());
     }
 }

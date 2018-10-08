@@ -1,5 +1,6 @@
 package com.andrewpatterson.ase.tcp;
 
+import com.andrewpatterson.ase.tcp.representation.TestCase;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 

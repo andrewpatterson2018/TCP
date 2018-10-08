@@ -1,4 +1,4 @@
-package com.andrewpatterson.ase.tcp;
+package com.andrewpatterson.ase.tcp.representation;
 
 import java.util.Arrays;
 

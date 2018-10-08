@@ -1,5 +1,6 @@
 package com.andrewpatterson.ase.tcp;
 
+import com.andrewpatterson.ase.tcp.representation.TestCase;
 import org.junit.Test;
 
 import java.util.Collection;

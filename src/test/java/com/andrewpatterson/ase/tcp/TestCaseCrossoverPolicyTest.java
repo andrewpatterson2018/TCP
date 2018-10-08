@@ -1,5 +1,7 @@
 package com.andrewpatterson.ase.tcp;
 
+import com.andrewpatterson.ase.tcp.representation.TestCase;
+import com.andrewpatterson.ase.tcp.representation.TestCaseOrderChromosome;
 import org.apache.commons.math3.genetics.ChromosomePair;
 import org.apache.commons.math3.genetics.GeneticAlgorithm;
 import org.apache.commons.math3.random.RandomGenerator;
@@ -9,7 +11,6 @@ import org.mockito.Matchers;
 
 import java.util.ArrayList;
 
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 

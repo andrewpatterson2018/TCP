@@ -1,9 +1,8 @@
 package com.andrewpatterson.ase.tcp;
 
+import com.andrewpatterson.ase.tcp.representation.TestCase;
 import org.junit.Assert;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 public class TestCaseTest {
 
