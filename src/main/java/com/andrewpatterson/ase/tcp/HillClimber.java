@@ -17,6 +17,7 @@ public class HillClimber implements Runnable {
 
     final List<TestCase> domain;
     final int length;
+    private TestCaseOrderChromosome testCaseOrderChromosome;
 
     public HillClimber(Collection<TestCase> domain, int length){
         this.domain = new ArrayList<TestCase>(domain);
@@ -24,12 +25,11 @@ public class HillClimber implements Runnable {
     }
     public void run() {
         //create a random permutation and evaluate its fitness
-        TestCaseOrderChromosome testCaseOrderChromosome = createRandom();
+        testCaseOrderChromosome = createRandom();
 
 
         //now evaluate all the neighbours
         TestCaseOrderChromosome current = testCaseOrderChromosome;
-        System.out.println(current.toString());
         int iterations = 0;
         while(true){
             List<TestCaseOrderChromosome> neighbours = new ArrayList<TestCaseOrderChromosome>(getNeighbours(testCaseOrderChromosome));
@@ -46,14 +46,13 @@ public class HillClimber implements Runnable {
             if(!hasChanged){ //if the current chromosome didnt change then we have found optimum
                 break;
             }
-            System.out.println(current.toString());
             iterations++;
         }
+        testCaseOrderChromosome = current;
 
-        System.out.println(iterations);
-        System.out.println(current.toString());
-
-
+    }
+    public TestCaseOrderChromosome result(){
+        return testCaseOrderChromosome;
     }
 
     public TestCaseOrderChromosome createRandom(){
@@ -101,5 +100,7 @@ public class HillClimber implements Runnable {
         HillClimber hillClimber = new HillClimber(testCaseDomain, 5);
 
         hillClimber.run();
+        TestCaseOrderChromosome result = hillClimber.result();
+        System.out.println(result.toString() +"\t"+result.fitness());
     }
 }

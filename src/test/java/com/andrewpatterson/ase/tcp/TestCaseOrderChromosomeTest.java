@@ -67,12 +67,14 @@ public class TestCaseOrderChromosomeTest {
         //create a testchromosome which misses faults faults
         ArrayList<TestCase> testcases = new ArrayList<TestCase>();
 
-        testcases.add(new TestCase("A",new int[]{0,0,0,0,0,0,0}));
-        testcases.add(new TestCase("B",new int[]{0,0,0,0,0,0,0}));
+        testcases.add(new TestCase("A",new int[]{0,0,0,0,0,0}));
+        testcases.add(new TestCase("B",new int[]{0,0,0,0,0,0}));
+        testcases.add(new TestCase("c",new int[]{0,0,0,0,0,0}));
+        testcases.add(new TestCase("c",new int[]{0,0,0,0,0,0}));
         TestCaseOrderChromosome testCaseOrderChromosome = new TestCaseOrderChromosome(testcases);
 
         //test chromosome order A–B–C–D–E–F–G–H–I–J
-        Assert.assertEquals(0.0, testCaseOrderChromosome.fitness(), 0.0001);
+        Assert.assertEquals(0.125, testCaseOrderChromosome.fitness(), 0.0001);
     }
     @org.junit.Test
     public void fitnessGodSuite() throws Exception {

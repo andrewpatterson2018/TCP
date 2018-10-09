@@ -1,4 +1,5 @@
+com/andrewpatterson/ase/tcp/HillClimber.class
 com/andrewpatterson/ase/tcp/Utils.class
-com/andrewpatterson/ase/tcp/TestCase.class
+com/andrewpatterson/ase/tcp/representation/TestCaseOrderChromosome.class
 com/andrewpatterson/ase/tcp/TCPMutationPolicy.class
-com/andrewpatterson/ase/tcp/TestCaseOrderChromosome.class
+com/andrewpatterson/ase/tcp/representation/TestCase.class

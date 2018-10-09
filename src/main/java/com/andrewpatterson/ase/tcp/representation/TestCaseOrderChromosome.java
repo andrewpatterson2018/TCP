@@ -60,12 +60,11 @@ public class TestCaseOrderChromosome extends AbstractListChromosome<TestCase>{
         int faultPositionSum = 0;
         for(int j=0; j<getLength(); j++){
             if(getRepresentation().get(j).hasDetectedFault(i)){
-                faultPositionSum += j+1;
+                return faultPositionSum += j+1;
 
-                break;
             }
         }
-        return faultPositionSum;
+        return getLength();
     }
     @Override
     public String toString() {

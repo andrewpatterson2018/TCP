@@ -1,6 +1,7 @@
-/home/dkb18171/Desktop/TCP/src/main/java/com/andrewpatterson/ase/tcp/TestCaseOrderChromosome.java
 /home/dkb18171/Desktop/TCP/src/main/java/com/andrewpatterson/ase/tcp/TCPMutationPolicy.java
+/home/dkb18171/Desktop/TCP/src/main/java/com/andrewpatterson/ase/tcp/representation/TestCaseOrderChromosome.java
 /home/dkb18171/Desktop/TCP/src/main/java/com/andrewpatterson/ase/tcp/Utils.java
 /home/dkb18171/Desktop/TCP/src/main/java/com/andrewpatterson/ase/tcp/TCP.java
-/home/dkb18171/Desktop/TCP/src/main/java/com/andrewpatterson/ase/tcp/TestCase.java
+/home/dkb18171/Desktop/TCP/src/main/java/com/andrewpatterson/ase/tcp/HillClimber.java
 /home/dkb18171/Desktop/TCP/src/main/java/com/andrewpatterson/ase/tcp/TestCaseCrossoverPolicy.java
+/home/dkb18171/Desktop/TCP/src/main/java/com/andrewpatterson/ase/tcp/representation/TestCase.java
